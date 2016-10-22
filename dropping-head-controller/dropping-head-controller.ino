@@ -1,5 +1,18 @@
-// set pin numbers:
+// pin info
+
+/** 
+*  Sensor
+*  GREEN  - Vcc
+*  PURPLE - GND
+*  BLUE   - Sense
+*/ 
 const int sensorPin     = 3;
+
+/** 
+*  Relay
+*  RED    - 12v (when active)
+*  ORANGE - GND
+*/ 
 const int relayPin      = 2;
 
 

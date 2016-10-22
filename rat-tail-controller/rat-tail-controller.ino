@@ -1,4 +1,4 @@
-// set pin numbers:
+// Pin Info
 const int sensorPin     = 4;
 const int sensorPwrPin  = 3;
 const int relayPin      = 2;

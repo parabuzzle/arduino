@@ -1,6 +1,14 @@
-// set pin numbers:
+// Pin Info
+
+/** 
+*  Sensor
+*  WHITE  - Vcc
+*  YELLOW - GND
+*  GREEN  - Sense
+*/ 
 const int sensorPin     = 3;
 const int sensorPwrPin  = 2;
+
 const int ledPin        = 4;
 
 
