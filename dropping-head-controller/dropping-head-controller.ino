@@ -32,6 +32,13 @@ void setup() {
   setupSerialLogging();
 }
 
+void dropRoutine() {
+  delay(2000)
+  digitalWrite(relayPin, HIGH)
+  delay(4000)
+  digitalWrite(relayPin, LOW)
+}
+
 void loop() {
   // read the state of the sensor value:
   sensorState = digitalRead(sensorPin);
@@ -43,8 +50,7 @@ void loop() {
       Serial.println("Went High!");
       logState = 1;
     }
-    digitalWrite(relayPin, HIGH);
-    delay(5000);
+    dropRoutine()
   } else {
     digitalWrite(relayPin, LOW);
     if ( logState == 1 ) {

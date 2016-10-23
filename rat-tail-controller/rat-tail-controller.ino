@@ -3,15 +3,34 @@ const int sensorPin     = 4;
 const int sensorPwrPin  = 3;
 const int relayPin      = 2;
 
+const int maxTailWhips  = 5;
+
 
 // variables will change:
 int sensorState = 0;
 int logState    = 0;
+int tailWhips   = 0;
 
 void setupSerialLogging() {
   Serial.begin(9600);  
   Serial.println("--- Start Serial Monitor SEND_RCVE ---");
   Serial.println(); 
+}
+
+void tailWhipRoutine() {
+  digitalWrite(relayPin, HIGH);
+  delay(500);
+  digitalWrite(relayPin, LOW);
+  delay(200);
+  
+  digitalWrite(relayPin, HIGH);
+  delay(700);
+  digitalWrite(relayPin, LOW);
+  delay(300);
+  
+  digitalWrite(relayPin, HIGH);
+  delay(200);
+  digitalWrite(relayPin, LOW);
 }
 
 void setup() {
@@ -33,8 +52,13 @@ void loop() {
       Serial.println("Went High!");
       logState = 1;
     }
-    digitalWrite(relayPin, HIGH);
-    delay(5000);
+
+    tailWhips = 0;
+    while( tailWhips < maxTailWhips ) {
+      tailWhipRoutine();
+      tailWhips = tailWhips + 1;
+    }
+
   } else {
     digitalWrite(relayPin, LOW);
     if ( logState == 1 ) {
