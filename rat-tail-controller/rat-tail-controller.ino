@@ -1,6 +1,18 @@
-// Pin Info
-const int sensorPin     = 4;
-const int sensorPwrPin  = 3;
+// pin info
+
+/**
+*  Sensor
+*  GREEN  - Vcc
+*  PURPLE - GND
+*  BLUE   - Sense
+*/
+const int sensorPin     = 3;
+
+/**
+*  Relay
+*  RED    - 12v (when active)
+*  ORANGE - GND
+*/
 const int relayPin      = 2;
 
 const int maxTailWhips  = 5;
@@ -12,9 +24,9 @@ int logState    = 0;
 int tailWhips   = 0;
 
 void setupSerialLogging() {
-  Serial.begin(9600);  
+  Serial.begin(9600);
   Serial.println("--- Start Serial Monitor SEND_RCVE ---");
-  Serial.println(); 
+  Serial.println();
 }
 
 void tailWhipRoutine() {
@@ -22,12 +34,12 @@ void tailWhipRoutine() {
   delay(500);
   digitalWrite(relayPin, LOW);
   delay(200);
-  
+
   digitalWrite(relayPin, HIGH);
   delay(700);
   digitalWrite(relayPin, LOW);
   delay(300);
-  
+
   digitalWrite(relayPin, HIGH);
   delay(200);
   digitalWrite(relayPin, LOW);
@@ -35,16 +47,14 @@ void tailWhipRoutine() {
 
 void setup() {
   pinMode(relayPin, OUTPUT);
-  pinMode(sensorPwrPin, OUTPUT);
   pinMode(sensorPin, INPUT);
-  digitalWrite(sensorPwrPin, HIGH);
   setupSerialLogging();
 }
 
 void loop() {
   // read the state of the sensor value:
   sensorState = digitalRead(sensorPin);
-  
+
   // check if the sensor is active
   // if it is, the sensorState is HIGH:
   if (sensorState == HIGH) {

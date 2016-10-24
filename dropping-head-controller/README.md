@@ -7,11 +7,6 @@ The controller for the dropping head prop
 
 ### Sensor
 
-  * GREEN  - Vcc
-  * PURPLE - GND
-  * BLUE   - Sense
-
-### Relay
-
-  * RED    - 12v (when active)
-  * ORANGE - GND
+  * WHITE  - Vcc
+  * YELLOW - GND
+  * GREEN  - Sense

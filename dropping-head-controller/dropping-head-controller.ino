@@ -1,18 +1,5 @@
-// pin info
-
-/** 
-*  Sensor
-*  GREEN  - Vcc
-*  PURPLE - GND
-*  BLUE   - Sense
-*/ 
+// Pin Info
 const int sensorPin     = 3;
-
-/** 
-*  Relay
-*  RED    - 12v (when active)
-*  ORANGE - GND
-*/ 
 const int relayPin      = 2;
 
 
@@ -21,9 +8,9 @@ int sensorState = 0;
 int logState    = 0;
 
 void setupSerialLogging() {
-  Serial.begin(9600);  
+  Serial.begin(9600);
   Serial.println("--- Start Serial Monitor SEND_RCVE ---");
-  Serial.println(); 
+  Serial.println();
 }
 
 void setup() {
@@ -33,16 +20,16 @@ void setup() {
 }
 
 void dropRoutine() {
-  delay(2000)
-  digitalWrite(relayPin, HIGH)
-  delay(4000)
-  digitalWrite(relayPin, LOW)
+  delay(1000);
+  digitalWrite(relayPin, HIGH);
+  delay(3000);
+  digitalWrite(relayPin, LOW);
 }
 
 void loop() {
   // read the state of the sensor value:
   sensorState = digitalRead(sensorPin);
-  
+
   // check if the sensor is active
   // if it is, the sensorState is HIGH:
   if (sensorState == HIGH) {
@@ -50,7 +37,7 @@ void loop() {
       Serial.println("Went High!");
       logState = 1;
     }
-    dropRoutine()
+    dropRoutine();
   } else {
     digitalWrite(relayPin, LOW);
     if ( logState == 1 ) {
