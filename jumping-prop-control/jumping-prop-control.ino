@@ -30,8 +30,10 @@ void loop() {
       Serial.println("Went High!");
       logState = 1;
     }
-    delay(250);
     digitalWrite(relayPin, HIGH);
+    delay(500);
+    digitalWrite(relayPin, LOW);
+    delay(18000); //prop runs for 15 seconds and the circuit reset is another 2 seconds
   } else {
     digitalWrite(relayPin, LOW);
     if ( logState == 1 ) {
