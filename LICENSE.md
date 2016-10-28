@@ -1,12 +1,3 @@
-Arduino Sketches
-===
-
-This is where I keep my arduino sketches.
-
-See README.md inside the folder for each sketch for more information
-
-# License
-
 The MIT License (MIT)
 
 Copyright (c) 2016 Michael Heijmans

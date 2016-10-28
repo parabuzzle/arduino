@@ -1,9 +1,16 @@
-// Pin Info
+/**
+* Copyright 2016 Michael Heijmans
+*
+* A simple sketch for controlling dropping head pneumatic prop
+*
+* Author::    Michael Heijmans  (parabuzzle@gmail.com)
+* Copyright:: Copyright (c) 2016 Michael Heijmans
+* License::   MIT
+*/
+
 const int sensorPin     = 3;
 const int relayPin      = 2;
 
-
-// variables will change:
 int sensorState = 0;
 int logState    = 0;
 
@@ -27,21 +34,19 @@ void dropRoutine() {
 }
 
 void loop() {
-  // read the state of the sensor value:
   sensorState = digitalRead(sensorPin);
 
-  // check if the sensor is active
-  // if it is, the sensorState is HIGH:
   if (sensorState == HIGH) {
     if ( logState == 0 ) {
-      Serial.println("Went High!");
+      Serial.println("Sensor sees something");
       logState = 1;
     }
+    Serial.println("Running dropRoutine");
     dropRoutine();
   } else {
     digitalWrite(relayPin, LOW);
     if ( logState == 1 ) {
-      Serial.println("Went Low!");
+      Serial.println("Nothing seen, going to sleep");
       logState = 0;
     }
   }

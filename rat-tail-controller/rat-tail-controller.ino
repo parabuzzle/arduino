@@ -1,7 +1,16 @@
-// pin info
+/**
+* Copyright 2016 Michael Heijmans
+*
+* A simple sketch for controlling the rat tails pneumatic prop
+*
+* Author::    Michael Heijmans  (parabuzzle@gmail.com)
+* Copyright:: Copyright (c) 2016 Michael Heijmans
+* License::   MIT
+*/
 
 /**
 *  Sensor
+*
 *  GREEN  - Vcc
 *  PURPLE - GND
 *  BLUE   - Sense
@@ -10,6 +19,7 @@ const int sensorPin     = 3;
 
 /**
 *  Relay
+*
 *  RED    - 12v (when active)
 *  ORANGE - GND
 */
@@ -17,8 +27,6 @@ const int relayPin      = 2;
 
 const int maxTailWhips  = 5;
 
-
-// variables will change:
 int sensorState = 0;
 int logState    = 0;
 int tailWhips   = 0;
@@ -29,41 +37,41 @@ void setupSerialLogging() {
   Serial.println();
 }
 
-void tailWhipRoutine() {
-  digitalWrite(relayPin, HIGH);
-  delay(500);
-  digitalWrite(relayPin, LOW);
-  delay(200);
-
-  digitalWrite(relayPin, HIGH);
-  delay(700);
-  digitalWrite(relayPin, LOW);
-  delay(300);
-
-  digitalWrite(relayPin, HIGH);
-  delay(200);
-  digitalWrite(relayPin, LOW);
-}
-
 void setup() {
   pinMode(relayPin, OUTPUT);
   pinMode(sensorPin, INPUT);
   setupSerialLogging();
+  randomSeed(analogRead(0));
+}å
+
+
+void tailWhipRoutine() {
+  digitalWrite(relayPin, HIGH);
+  delay(random(100,400));
+  digitalWrite(relayPin, LOW);
+  delay(random(200, 500));
+
+  digitalWrite(relayPin, HIGH);
+  delay(random(100,400));
+  digitalWrite(relayPin, LOW);
+  delay(random(200, 500));
+
+  digitalWrite(relayPin, HIGH);
+  delay(random(100,400));
+  digitalWrite(relayPin, LOW);
 }
 
 void loop() {
-  // read the state of the sensor value:
   sensorState = digitalRead(sensorPin);
 
-  // check if the sensor is active
-  // if it is, the sensorState is HIGH:
   if (sensorState == HIGH) {
     if ( logState == 0 ) {
-      Serial.println("Went High!");
+      Serial.println("Sensor sees something");
       logState = 1;
     }
 
     tailWhips = 0;
+    Serial.println("Running tailWhipRoutine");
     while( tailWhips < maxTailWhips ) {
       tailWhipRoutine();
       tailWhips = tailWhips + 1;
@@ -72,9 +80,8 @@ void loop() {
   } else {
     digitalWrite(relayPin, LOW);
     if ( logState == 1 ) {
-      Serial.println("Went Low!");
+      Serial.println("Nothing seen, going to sleep");
       logState = 0;
     }
   }
-
 }

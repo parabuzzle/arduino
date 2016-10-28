@@ -1,15 +1,24 @@
-// Pin Info
-const int relayPin      = 2;
+/**
+* Copyright 2016 Michael Heijmans
+*
+* A simple sketch for controlling the trigger for an electric firecracker
+*
+* Author::    Michael Heijmans  (parabuzzle@gmail.com)
+* Copyright:: Copyright (c) 2016 Michael Heijmans
+* License::   MIT
+*/
 
 /**
 *  Sensor
+*
 *  RED   - Vcc
 *  GRAY  - GND
 *  WHITE - Sense
 */
 const int sensorPin     = 3;
 
-// variables will change:
+const int relayPin      = 2;
+
 int sensorState = 0;
 int logState    = 0;
 
@@ -26,14 +35,11 @@ void setup() {
 }
 
 void loop() {
-  // read the state of the sensor value:
   sensorState = digitalRead(sensorPin);
 
-  // check if the sensor is active
-  // if it is, the sensorState is HIGH:
   if (sensorState == HIGH) {
     if ( logState == 0 ) {
-      Serial.println("Went High!");
+      Serial.println("Sensor sees something");
       logState = 1;
     }
     digitalWrite(relayPin, HIGH);
@@ -43,7 +49,7 @@ void loop() {
   } else {
     digitalWrite(relayPin, LOW);
     if ( logState == 1 ) {
-      Serial.println("Went Low!");
+      Serial.println("Nothing seen, going to sleep");
       logState = 0;
     }
   }
