@@ -1,7 +1,13 @@
 // Pin Info
-const int sensorPin     = 3;
 const int relayPin      = 2;
 
+/**
+*  Sensor
+*  RED   - Vcc
+*  GRAY  - GND
+*  WHITE - Sense
+*/
+const int sensorPin     = 3;
 
 // variables will change:
 int sensorState = 0;
@@ -30,8 +36,10 @@ void loop() {
       Serial.println("Went High!");
       logState = 1;
     }
-    delay(250);
     digitalWrite(relayPin, HIGH);
+    delay(2000);
+    digitalWrite(relayPin, LOW);
+    delay(11000);
   } else {
     digitalWrite(relayPin, LOW);
     if ( logState == 1 ) {

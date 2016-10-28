@@ -7,6 +7,6 @@ The controller for the electric fire cracker
 
 ### Sensor
 
-  * TBA - Vcc
-  * TBA - GND
-  * TBA - Sense
+  * RED   - Vcc
+  * GRAY  - GND
+  * WHITE - Sense
