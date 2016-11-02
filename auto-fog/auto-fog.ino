@@ -1,7 +1,7 @@
 /**
 * Copyright 2016 Michael Heijmans
 *
-* A simple sketch for signaling when the drop panel should be dropped
+* A simple sketch for running a fog machine
 *
 * Author::    Michael Heijmans  (parabuzzle@gmail.com)
 * Copyright:: Copyright (c) 2016 Michael Heijmans
