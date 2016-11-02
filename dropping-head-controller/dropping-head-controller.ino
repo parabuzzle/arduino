@@ -8,8 +8,12 @@
 * License::   MIT
 */
 
-const int sensorPin     = 3;
-const int relayPin      = 2;
+const int sensorPin       = 3;
+const int relayPin        = 2;
+
+const int resetTime       = 10000;
+const int waitBeforeDrop  = 100;
+const int waitBeforeReset = 3000;
 
 int sensorState = 0;
 int logState    = 0;
@@ -26,11 +30,16 @@ void setup() {
   setupSerialLogging();
 }
 
+void waitForReset() {
+  delay(resetTime);
+}
+
 void dropRoutine() {
-  delay(1000);
+  delay(waitBeforeDrop);
   digitalWrite(relayPin, HIGH);
-  delay(3000);
+  delay(waitBeforeReset);
   digitalWrite(relayPin, LOW);
+  waitForReset();
 }
 
 void loop() {
@@ -50,5 +59,4 @@ void loop() {
       logState = 0;
     }
   }
-
 }

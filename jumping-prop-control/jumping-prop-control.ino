@@ -11,6 +11,9 @@
 const int sensorPin     = 3;
 const int relayPin      = 2;
 
+const int waitBeforeRun = 500;
+const int waitForReset  = 18000; //prop runs for 15 seconds and the circuit reset is another 2 seconds
+
 int sensorState = 0;
 int logState    = 0;
 
@@ -35,9 +38,9 @@ void loop() {
       logState = 1;
     }
     digitalWrite(relayPin, HIGH);
-    delay(500);
+    delay(waitBeforeRun);
     digitalWrite(relayPin, LOW);
-    delay(18000); //prop runs for 15 seconds and the circuit reset is another 2 seconds
+    delay(waitForReset);
   } else {
     digitalWrite(relayPin, LOW);
     if ( logState == 1 ) {

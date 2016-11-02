@@ -15,9 +15,12 @@
 *  GRAY  - GND
 *  WHITE - Sense
 */
-const int sensorPin     = 3;
+const int sensorPin    = 3;
 
-const int relayPin      = 2;
+const int relayPin     = 2;
+
+const int runTime      = 2000;
+const int waitForReset = 11000;
 
 int sensorState = 0;
 int logState    = 0;
@@ -43,9 +46,9 @@ void loop() {
       logState = 1;
     }
     digitalWrite(relayPin, HIGH);
-    delay(2000);
+    delay(runTime);
     digitalWrite(relayPin, LOW);
-    delay(11000);
+    delay(waitForReset);
   } else {
     digitalWrite(relayPin, LOW);
     if ( logState == 1 ) {

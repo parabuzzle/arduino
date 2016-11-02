@@ -17,8 +17,9 @@
 */
 const int sensorPin     = 3;
 const int sensorPwrPin  = 2;
-
 const int ledPin        = 4;
+
+const int resetTime     = 5000;
 
 int sensorState = 0;
 int logState    = 0;
@@ -46,7 +47,7 @@ void loop() {
       logState = 1;
     }
     digitalWrite(ledPin, HIGH);
-    delay(5000);
+    delay(resetTime);
   } else {
     digitalWrite(ledPin, LOW);
     if ( logState == 1 ) {
@@ -54,5 +55,4 @@ void loop() {
       logState = 0;
     }
   }
-
 }
