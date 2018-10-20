@@ -1,5 +1,5 @@
 /**
-* Copyright 2018 Michael Heijmans
+* Copyright 2018 Rotting Orchards
 *
 * Generic single sensor prop controller
 *
@@ -46,9 +46,9 @@ void off(int pin){
 
 // Animation Function
 void animate() {
-  Serial.println('waiting ' + animationDelay + 'ms before animating');
+  Serial.println("waiting to animate");
   delay(animationDelay);
-  Serial.println('activating relay for ' + activationPeriod + 'ms');
+  Serial.println("activating!");
   on(relayPin);
   delay(activationPeriod);
   Serial.println("deactivating relay");
@@ -68,7 +68,6 @@ void loop() {
   sensorState = digitalRead(sensorPin);
 
   if (sensorState == HIGH) {
-    
     if ( logState == 0 ) {
       Serial.println("Sensor sees something");
       logState = 1;
@@ -76,7 +75,7 @@ void loop() {
     
     animate();
 
-    Serial.println('waiting' + waitForReset + 'ms before resetting');
+    Serial.println("waiting for reset");
     delay(waitForReset);
     
   } else {
