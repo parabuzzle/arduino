@@ -1,4 +1,4 @@
 Rat Tail Controller
 ===
 
-Controls the pneumatic rat tail prop.
+Controls the pneumatic rat tail prop I built.

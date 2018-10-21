@@ -1,10 +1,10 @@
 /**
-* Copyright 2016 Michael Heijmans
+* Copyright 2016 Rotting Orchards Haunted Consulting
 *
 * A simple sketch for controlling the trigger for an electric firecracker
 *
 * Author::    Michael Heijmans  (parabuzzle@gmail.com)
-* Copyright:: Copyright (c) 2016 Michael Heijmans
+* Copyright:: Copyright (c) 2016 Rotting Orchards Haunted Consulting
 * License::   MIT
 */
 

@@ -1,10 +1,10 @@
 /**
-* Copyright 2018 Rotting Orchards
+* Copyright 2018 Rotting Orchards Haunted Consulting
 *
 * Light Controller
 *
 * Author::    Michael Heijmans  (parabuzzle@gmail.com)
-* Copyright:: Copyright (c) 2018 Rotting Orchards
+* Copyright:: Copyright (c) 2018 Rotting Orchards Haunted Consulting
 * License::   MIT
 */
 
@@ -26,7 +26,7 @@ int logState = 0;
 void setupSerialLogging() {
   Serial.begin(9600);
   Serial.println("--- Start Serial Logging ---");
-  Serial.println("Rotting Orchards Simple Prop Controller");
+  Serial.println("Rotting Orchards Light Controller");
   Serial.println("https://www.rottingorchards.com");
   Serial.println("------");
   Serial.println(""); // new line to make it look nice :) 
@@ -80,7 +80,7 @@ void loop() {
   if (triggerState == HIGH) {
     
     if ( logState == 0 ) {
-      Serial.println("Transition to sectond section triggered");
+      Serial.println("Transition to second section triggered");
       logState = 1;
     }
     

@@ -1,20 +1,21 @@
 /**
-* Copyright 2018 Rotting Orchards
+* Copyright 2018 Rotting Orchards Haunted Consulting
 *
 * Generic single sensor prop controller
 *
 * Author::    Michael Heijmans  (parabuzzle@gmail.com)
-* Copyright:: Copyright (c) 2018 Rotting Orchards
+* Copyright:: Copyright (c) 2018 Rotting Orchards Haunted Consulting
 * License::   MIT
 */
 
-
-// define constants
-#define sensorPin 3            // Input pin connected to PIR sensor
-#define relayPin 2             // Output pin to activate the Relay
+// Timing Settings
 #define animationDelay 0       // Time to wait (in milliseconds) after sensor is active and before animation begins
 #define activationPeriod 5000  // Time to keep the relay active in milliseconds
 #define waitForReset 5000      // Time to wait after routine is complete before starting it all over again
+
+// define pins
+#define sensorPin 3            // Input pin connected to PIR sensor
+#define relayPin 2             // Output pin to activate the Relay
 
 // define mutables
 int sensorState = 0;
